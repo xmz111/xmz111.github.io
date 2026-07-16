@@ -1,272 +1,266 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zanyi Wang</title>
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  
-</head>
-
-<head>
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
   <style>
+    body {
+      font-family: 'Lato', Verdana, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333;
+      margin: 0;
+      background: #fff;
+    }
+    a { color: #1772d0; text-decoration: none; }
+    a:hover, a:focus { color: #f09228; }
+    .page {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 3%;
+      box-sizing: border-box;
+    }
+    .name { font-size: 40px; font-weight: bold; }
+    .section-heading { font-size: 24px; font-weight: bold; }
+    .paper-title { font-size: 17px; font-weight: bold; }
+
+
+    .bio-table { width: 100%; border: 0; border-spacing: 0; border-collapse: separate; }
+    .bio-table td { padding: 2.5%; vertical-align: middle; }
+    .bio-text  { width: 63%; }
+    .bio-photo { width: 37%; }
+    .bio-photo img {
+      width: 100%;
+      max-width: 260px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* News */
+    .news { padding: 20px; }
+    .news ul { margin: 10px 0 0; padding-left: 22px; }
+    .news li { margin: 5px 0; }
+
+    .pub-table { width: 100%; border: 0; border-spacing: 0; border-collapse: separate; }
+    .pub-table td { padding: 20px; vertical-align: middle; }
+    .pub-thumb-cell { width: 25%; }
+    .pub-text-cell  { width: 75%; }
     .paper-thumb {
-      width: 340px;       
-      height: 150px;     
-      object-fit: cover;  
-      border-radius: 6px; 
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+      width: 100%;
+      max-width: 340px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: block;
+    }
+
+    footer {
+      text-align: right;
+      font-size: small;
+      padding: 20px 0 30px;
+    }
+
+    @media (max-width: 640px) {
+      .bio-table td, .pub-table td { display: block; width: auto; }
+      .bio-photo img { max-width: 180px; }
+      .paper-thumb { height: auto; max-height: 200px; }
     }
   </style>
-  </head>
+</head>
 
 <body>
-  <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <p style="text-align:center">
-                <name style="font-size: 40px; font-weight: bold;">Zanyi Wang</name>
-              </p>
-              <p>I am a MS student in Electrical and Computer Engineering (ECE) at the <a href="https://ucsd.edu/">University of California, San Diego (UCSD)</a>.
-              </p>
-              <p>
-                Previously, I received my B.Eng. in Automation Engineering from <a href="http://en.xjtu.edu.cn/">Xi’an Jiaotong University (XJTU)</a>. I also spent a wonderful time as an exchange student at CUHK.
-              </p>
-              <p>
-                My research interests lie in <strong>Video Understanding</strong> and <strong>Generative Modeling</strong>.
-              </p>
-              <p style="text-align:center">
-                <a href="mailto:zaw003@ucsd.edu">Email</a> &nbsp/&nbsp
-                <a href="https://github.com/xmz111">Github</a>
-              </p>
-            </td>
-            <td style="padding:2.5%;width:40%;max-width:40%">
-              <a href="images/profile.jpg"><img style="width:100%;max-width:100%;object-fit: cover; border-radius: 50%" alt="profile photo" src="images/zanyi.jpg" class="hoverZoomLink"></a>
-            </td>
-          </tr>
-        </tbody></table>
+  <div class="page">
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>News</heading>
-              <p>
-                <li style="margin: 5px;"> <strong>[2026-07]</strong> One paper accepted to <strong>ACM MM 2026</strong>!</li>
-                <li style="margin: 5px;"> <strong>[2026-06]</strong> One paper accepted to <strong>ECCV 2026</strong>!</li>
-                <li style="margin: 5px;"> <strong>[2026-02]</strong> One paper accepted to <strong>CVPR 2026</strong>!</li>
-                <li style="margin: 5px;"> <strong>[2026-01]</strong> One paper accepted to <strong>ICLR 2026</strong>!</li>
-                <li style="margin: 5px;"> <strong>[2025-07]</strong> One paper accepted to <strong>ACM MM 2025</strong>!</li>
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
+    <table class="bio-table"><tbody>
+      <tr>
+        <td class="bio-text">
+          <p style="text-align:center"><span class="name">Zanyi Wang</span></p>
+          <p>I am a MS student in Electrical and Computer Engineering (ECE) at the
+            <a href="https://ucsd.edu/">University of California, San Diego (UCSD)</a>.
+          </p>
+          <p>Previously, I received my B.Eng. in Automation Engineering from
+            <a href="http://en.xjtu.edu.cn/">Xi'an Jiaotong University (XJTU)</a>.
+            I also spent a wonderful time as an exchange student at CUHK.
+          </p>
+          <p>My research interests lie in <strong>Video Understanding</strong> and <strong>Generative Modeling</strong>.</p>
+          <p style="text-align:center">
+            <a href="mailto:zaw003@ucsd.edu">Email</a> &nbsp;/&nbsp;
+            <a href="https://github.com/xmz111">Github</a>
+          </p>
+        </td>
+        <td class="bio-photo">
+          <a href="images/profile.jpg"><img alt="profile photo" src="images/zanyi.jpg"></a>
+        </td>
+      </tr>
+    </tbody></table>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle">
-              <heading>Selected Publications</heading>
-                (* denotes equal contribution)
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
+    <!-- ===================== News ===================== -->
+    <div class="news">
+      <span class="section-heading">News</span>
+      <ul>
+        <li><strong>[2026-07]</strong> One paper accepted to <strong>ACM MM 2026</strong>!</li>
+        <li><strong>[2026-06]</strong> One paper accepted to <strong>ECCV 2026</strong>!</li>
+        <li><strong>[2026-02]</strong> One paper accepted to <strong>CVPR 2026</strong>!</li>
+        <li><strong>[2026-01]</strong> One paper accepted to <strong>ICLR 2026</strong>!</li>
+        <li><strong>[2025-07]</strong> One paper accepted to <strong>ACM MM 2025</strong>!</li>
+      </ul>
+    </div>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    <!-- ===================== Publications ===================== -->
+    <div class="news">
+      <span class="section-heading">Selected Publications</span>
+      <span>(* denotes equal contribution)</span>
+    </div>
 
-          <tr onmouseout="ACMMM26_stop()" onmouseover="ACMMM26_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/papers/affordancesam.png' class="paper-thumb" alt="gd">
-              </div>
-            </td>
-            <td style="padding:20px;width:40%;vertical-align:middle">
-                <papertitle style="font-size: 17px; font-weight: bold;"> 	AffordanceSAM: Segment Anything Once More in Affordance Grounding</papertitle>
-              </a>
-              <br>
-              Dengyang Jiang, <strong>Zanyi Wang*</strong>, Hengzhuang Li, Sizhe Dang, Teli Ma, Wei Wei, Guang Dai, Lei Zhang, Mengmeng Wang
-              <br>
-              <em>ACM International Conference on Multimedia (ACM MM)</em>, 2026
-              <br>
-              <a href="https://arxiv.org/abs/2504.15650">arXiv</a>
-              <p></p>
-              <p>
-                Transferring SAM to affordance grounding task and showing robust performance for both seen and unseen actions.
-              </p>
-            </td>
-          </tr>
+    <table class="pub-table"><tbody>
 
-          <tr onmouseout="dmdr_stop()" onmouseover="dmdr_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/papers/dmdr.jpg' class="paper-thumb" alt="FlowRVS Teaser">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle  style="font-size: 17px; font-weight: bold;">Distribution Matching Distillation Meets Reinforcement Learning</papertitle>
-              <br>
-              Dengyang Jiang, Dongyang Liu, <strong>Zanyi Wang</strong>, Qilong Wu, Liuzhuozheng Li, Hengzhuang Li, Xin Jin, David Liu, Zhen Li, Bo Zhang, Mengmeng Wang, Steven Hoi, Peng Gao, Harry Yang
-              <br>
-              <em>European Conference on Computer Vision (ECCV)</em>, 2026
-              <br>
-              <a href="https://github.com/vvvvvjdy/dmdr">code</a> /
-              <a href="https://arxiv.org/abs/2511.13649">arXiv</a>
-              <p></p>
-              <p>Showing that DMD and RL can be trained simultaneously, with RL enabling the student model to surpass the teacher and DMD loss regularizing RL to prevent reward hacking.</p>
-            </td>
-          </tr>
-        
-  
-          <tr onmouseout="cvpr26_ws_stop()" onmouseover="cvpr26_ws_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/papers/gd.png' class="paper-thumb" alt="gd">
-              </div>
-            </td>
-            <td style="padding:20px;width:40%;vertical-align:middle">
-                <papertitle style="font-size: 17px; font-weight: bold;"> 	Unlocking the Potential of Grounding DINO in Videos: Parameter-Efficient Adaptation for Limited-Data Spatial-Temporal Localization</papertitle>
-              </a>
-              <br>
-              <strong>Zanyi Wang</strong>, Fan Li, Dengyang Jiang, Liuzhuozheng Li, Yunhua Zhong, Guang Dai, Mengmeng Wang
-              <br>
-              <em>Conference on Computer Vision and Pattern Recognition (CVPR) @ CV4Smalls WS</em>, 2026
-              <br>
-              <a href="https://arxiv.org/html/2604.12346v1">arXiv</a>
-              <p></p>
-              <p>
-                A parameter-efficient adaptation approach that successfully tackles complex spatio-temporal localization under strict small-data constraints.
-              </p>
-            </td>
-          </tr>
-          
-          <tr onmouseout="cvpr26_stop()" onmouseover="cvpr26_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/papers/refvton.png' class="paper-thumb" alt="FlowRVS Teaser">
-              </div>
-            </td>
-            <td style="padding:20px;width:40%;vertical-align:middle">
-                <papertitle style="font-size: 17px; font-weight: bold;"> RefTON: Person-to-Person Virtual Try-On with Unpaired Visual References</papertitle>
-              </a>
-              <br>
-              Liuzhuozheng Li, Yue Gong, Shanyuan Liu, <strong>Zanyi Wang</strong>, Dengyang Jiang, Liebucha Wu, Bo Cheng, YuhangMa, Dawei Leng, Yuhui Yin
-              <br>
-              <em>Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2026
-              <br>
-              <a href="https://github.com/360CVGroup/RefVTON">code</a> /
-              <a href="https://arxiv.org/abs/2511.00956">arXiv</a>
-              <p></p>
-              <p>
-                An End-to-End Virtual Try-on model that directly fits the target garment onto the person image.
-              </p>
-            </td>
-          </tr>
+      <tr>
+        <td class="pub-thumb-cell">
+          <img src="images/papers/affordancesam.png" class="paper-thumb" alt="AffordanceSAM teaser">
+        </td>
+        <td class="pub-text-cell">
+          <span class="paper-title">AffordanceSAM: Segment Anything Once More in Affordance Grounding</span>
+          <br>
+          Dengyang Jiang, <strong>Zanyi Wang*</strong>, Hengzhuang Li, Sizhe Dang, Teli Ma, Wei Wei, Guang Dai, Lei Zhang, Mengmeng Wang
+          <br>
+          <em>ACM International Conference on Multimedia (ACM MM)</em>, 2026
+          <br>
+          <a href="https://arxiv.org/abs/2504.15650">arXiv</a>
+          <p>Transferring SAM to affordance grounding task and showing robust performance for both seen and unseen actions.</p>
+        </td>
+      </tr>
 
-          <tr onmouseout="iclr26_stop()" onmouseover="iclr26_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/papers/flowrvs.png' class="paper-thumb" alt="FlowRVS Teaser">
-              </div>
-            </td>
-            <td style="padding:20px;width:40%;vertical-align:middle">
-                <papertitle style="font-size: 17px; font-weight: bold;"> Deforming Videos to Masks: Flow Matching for Referring Video Segmentation</papertitle>
-              </a>
-              <br>
-              <strong>Zanyi Wang</strong>, Dengyang Jiang, Liuzhuozheng Li, Sizhe Dang, Chengzu Li, Harry Yang, Guang Dai, Mengmeng Wang, Jingdong Wang
-              <br>
-              <em>International Conference on Learning Representations (ICLR)</em>, 2026
-              <br>
-              <a href="https://github.com/xmz111/FlowRVS">code</a> /
-              <a href="https://arxiv.org/abs/2510.06139">arXiv</a> /
-              <a href="https://mp.weixin.qq.com/s/q00A7IB3wd_FzdLv49ad1w">机器之心</a>
-              <p></p>
-              <p>
-                Reformulated RVOS as learning a continuous, text-conditioned flow that deforms a video's content into its target mask.
-              </p>
-            </td>
-          </tr>
+      <tr>
+        <td class="pub-thumb-cell">
+          <img src="images/papers/dmdr.jpg" class="paper-thumb" alt="DMDR teaser">
+        </td>
+        <td class="pub-text-cell">
+          <span class="paper-title">Distribution Matching Distillation Meets Reinforcement Learning</span>
+          <br>
+          Dengyang Jiang, Dongyang Liu, <strong>Zanyi Wang</strong>, Qilong Wu, Liuzhuozheng Li, Hengzhuang Li, Xin Jin, David Liu, Zhen Li, Bo Zhang, Mengmeng Wang, Steven Hoi, Peng Gao, Harry Yang
+          <br>
+          <em>European Conference on Computer Vision (ECCV)</em>, 2026
+          <br>
+          <a href="https://github.com/vvvvvjdy/dmdr">code</a> /
+          <a href="https://arxiv.org/abs/2511.13649">arXiv</a>
+          <p>Showing that DMD and RL can be trained simultaneously, with RL enabling the student model to surpass the teacher and DMD loss regularizing RL to prevent reward hacking.</p>
+        </td>
+      </tr>
 
-          <tr onmouseout="acmmm25_stop()" onmouseover="acmmm25_start()">
-            <td style="padding:20px;width:40%;vertical-align:middle">
-              <div class="one">
-                <img src='images/papers/triclip3d.png' class="paper-thumb" alt="FlowRVS Teaser">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-                <papertitle style="font-size: 17px; font-weight: bold;">TriCLIP-3D: A Unified Parameter-Efficient Framework for Tri-Modal 3D Visual Grounding based on CLIP</papertitle>
-              </a>
-              <br>
-              Fan Li, <strong>Zanyi Wang*</strong>, Zeyi Huang, Guang Dai, Jingdong Wang, Mengmeng Wang
-              <br>
-              <em>ACM International Conference on Multimedia (ACM MM)</em>, 2025
-              <br>
-              <a href="https://arxiv.org/abs/2507.14904">arXiv</a>
-              <p></p>
-              <p>
-                Developed a unified framework leveraging CLIP’s ViT encoder for efficient tri-modal 3D visual grounding.
-              </p>
-            </td>
-          </tr>
+      <tr>
+        <td class="pub-thumb-cell">
+          <img src="images/papers/gd.png" class="paper-thumb" alt="Grounding DINO video adaptation teaser">
+        </td>
+        <td class="pub-text-cell">
+          <span class="paper-title">Unlocking the Potential of Grounding DINO in Videos: Parameter-Efficient Adaptation for Limited-Data Spatial-Temporal Localization</span>
+          <br>
+          <strong>Zanyi Wang</strong>, Fan Li, Dengyang Jiang, Liuzhuozheng Li, Yunhua Zhong, Guang Dai, Mengmeng Wang
+          <br>
+          <em>Conference on Computer Vision and Pattern Recognition (CVPR) @ CV4Smalls WS</em>, 2026
+          <br>
+          <a href="https://arxiv.org/html/2604.12346v1">arXiv</a>
+          <p>A parameter-efficient adaptation approach that successfully tackles complex spatio-temporal localization under strict small-data constraints.</p>
+        </td>
+      </tr>
 
+      <tr>
+        <td class="pub-thumb-cell">
+          <img src="images/papers/refvton.png" class="paper-thumb" alt="RefTON teaser">
+        </td>
+        <td class="pub-text-cell">
+          <span class="paper-title">RefTON: Person-to-Person Virtual Try-On with Unpaired Visual References</span>
+          <br>
+          Liuzhuozheng Li, Yue Gong, Shanyuan Liu, <strong>Zanyi Wang</strong>, Dengyang Jiang, Liebucha Wu, Bo Cheng, Yuhang Ma, Dawei Leng, Yuhui Yin
+          <br>
+          <em>Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2026
+          <br>
+          <a href="https://github.com/360CVGroup/RefVTON">code</a> /
+          <a href="https://arxiv.org/abs/2511.00956">arXiv</a>
+          <p>An End-to-End Virtual Try-on model that directly fits the target garment onto the person image.</p>
+        </td>
+      </tr>
 
-            <tr onmouseout="no_time_stop()" onmouseover="no_time_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/papers/no_time.png' class="paper-thumb" alt="FlowRVS Teaser">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle  style="font-size: 17px; font-weight: bold;">Exploring Time Conditioning in Diffusion Generative Models from Disjoint Noisy Data Manifolds</papertitle>
-              <br>
-              Liuzhuozheng Li, Zhiyuan Zhan, Shuhong Liu, Dengyang Jiang, <strong>Zanyi Wang</strong>, Guang Dai, Jingdong Wang, Mengmeng Wang
-              <br>
-              <em>Preprint</em>, 2026
-              <br>
-              <a href="https://github.com/liuzhuozheng-LI/time-uncond-diffusion">code</a> /
-              <a href="https://arxiv.org/abs/2604.25289">arXiv</a>
-              <p></p>
-              <p>Diffusion models can generate high-quality samples without timestep or class embeddings when noisy data manifolds are kept geometrically disjoint across timesteps.</p>
-            </td>
-          </tr>
-          
-          <tr onmouseout="think_in_frames_stop()" onmouseover="think_in_frame_start()">
-            <td style="padding:20px;width:25%;vertical-align:middle">
-              <div class="one">
-                <img src='images/papers/think_in_frames.png' class="paper-thumb" alt="FlowRVS Teaser">
-              </div>
-            </td>
-            <td style="padding:20px;width:75%;vertical-align:middle">
-              <papertitle  style="font-size: 17px; font-weight: bold;">Thinking in Frames: How Visual Context and Test-Time Scaling Empower Video Reasoning</papertitle>
-              <br>
-              Chengzu Li, <strong>Zanyi Wang*</strong>, Jiaang Li, Yi Xu, Han Zhou, Huanyu Zhang, Ruichuan An, Dengyang Jiang, Zhaochong An, Ivan Vulić, Serge Belongie, Anna Korhonen
-              <br>
-              <em>Preprint</em>, 2026
-              <br>
-              <a href="https://arxiv.org/abs/2601.21037">arXiv</a>
-              <p></p>
-              <p>Exploring how visual context enhances video reasoning capabilities.</p>
-            </td>
-          </tr>
+      <tr>
+        <td class="pub-thumb-cell">
+          <img src="images/papers/flowrvs.png" class="paper-thumb" alt="FlowRVS teaser">
+        </td>
+        <td class="pub-text-cell">
+          <span class="paper-title">Deforming Videos to Masks: Flow Matching for Referring Video Segmentation</span>
+          <br>
+          <strong>Zanyi Wang</strong>, Dengyang Jiang, Liuzhuozheng Li, Sizhe Dang, Chengzu Li, Harry Yang, Guang Dai, Mengmeng Wang, Jingdong Wang
+          <br>
+          <em>International Conference on Learning Representations (ICLR)</em>, 2026
+          <br>
+          <a href="https://github.com/xmz111/FlowRVS">code</a> /
+          <a href="https://arxiv.org/abs/2510.06139">arXiv</a> /
+          <a href="https://mp.weixin.qq.com/s/q00A7IB3wd_FzdLv49ad1w">机器之心</a>
+          <p>Reformulated RVOS as learning a continuous, text-conditioned flow that deforms a video's content into its target mask.</p>
+        </td>
+      </tr>
 
+      <tr>
+        <td class="pub-thumb-cell">
+          <img src="images/papers/triclip3d.png" class="paper-thumb" alt="TriCLIP-3D teaser">
+        </td>
+        <td class="pub-text-cell">
+          <span class="paper-title">TriCLIP-3D: A Unified Parameter-Efficient Framework for Tri-Modal 3D Visual Grounding based on CLIP</span>
+          <br>
+          Fan Li, <strong>Zanyi Wang*</strong>, Zeyi Huang, Guang Dai, Jingdong Wang, Mengmeng Wang
+          <br>
+          <em>ACM International Conference on Multimedia (ACM MM)</em>, 2025
+          <br>
+          <a href="https://arxiv.org/abs/2507.14904">arXiv</a>
+          <p>Developed a unified framework leveraging CLIP's ViT encoder for efficient tri-modal 3D visual grounding.</p>
+        </td>
+      </tr>
 
+      <tr>
+        <td class="pub-thumb-cell">
+          <img src="images/papers/no_time.png" class="paper-thumb" alt="Time conditioning in diffusion models teaser">
+        </td>
+        <td class="pub-text-cell">
+          <span class="paper-title">Exploring Time Conditioning in Diffusion Generative Models from Disjoint Noisy Data Manifolds</span>
+          <br>
+          Liuzhuozheng Li, Zhiyuan Zhan, Shuhong Liu, Dengyang Jiang, <strong>Zanyi Wang</strong>, Guang Dai, Jingdong Wang, Mengmeng Wang
+          <br>
+          <em>Preprint</em>, 2026
+          <br>
+          <a href="https://github.com/liuzhuozheng-LI/time-uncond-diffusion">code</a> /
+          <a href="https://arxiv.org/abs/2604.25289">arXiv</a>
+          <p>Diffusion models can generate high-quality samples without timestep or class embeddings when noisy data manifolds are kept geometrically disjoint across timesteps.</p>
+        </td>
+      </tr>
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-          <tr>
-            <td style="padding:0px">
-              <br>
-              <p style="text-align:right;font-size:small;">
-                Design and source code from <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron</a>'s website.
-              </p>
-            </td>
-          </tr>
-        </tbody></table>
-      </td>
-    </tr>
-  </table>
+      <tr>
+        <td class="pub-thumb-cell">
+          <img src="images/papers/think_in_frames.png" class="paper-thumb" alt="Thinking in Frames teaser">
+        </td>
+        <td class="pub-text-cell">
+          <span class="paper-title">Thinking in Frames: How Visual Context and Test-Time Scaling Empower Video Reasoning</span>
+          <br>
+          Chengzu Li, <strong>Zanyi Wang*</strong>, Jiaang Li, Yi Xu, Han Zhou, Huanyu Zhang, Ruichuan An, Dengyang Jiang, Zhaochong An, Ivan Vulić, Serge Belongie, Anna Korhonen
+          <br>
+          <em>Preprint</em>, 2026
+          <br>
+          <a href="https://arxiv.org/abs/2601.21037">arXiv</a>
+          <p>Exploring how visual context enhances video reasoning capabilities.</p>
+        </td>
+      </tr>
+
+    </tbody></table>
+
+    <footer>
+      Design and source code from <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron</a>'s website.
+    </footer>
+
+  </div>
 </body>
 </html>
