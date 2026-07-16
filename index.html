@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Zanyi Wang</title>
   <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
   <style>
+    /* ============ 全部样式内嵌，不依赖任何外部 CSS ============ */
+    * { box-sizing: border-box; }
+
     body {
       font-family: 'Lato', Verdana, Helvetica, sans-serif;
       font-size: 16px;
@@ -15,63 +17,101 @@
       color: #333;
       margin: 0;
       background: #fff;
+      -webkit-text-size-adjust: 100%;   /* 防止 iOS 自动放大字体 */
     }
     a { color: #1772d0; text-decoration: none; }
     a:hover, a:focus { color: #f09228; }
+    p { margin: 0 0 12px; }
+
     .page {
       width: 100%;
-      max-width: 1000px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 0 3%;
-      box-sizing: border-box;
+      padding: 32px 4% 0;
     }
-    .name { font-size: 40px; font-weight: bold; }
-    .section-heading { font-size: 24px; font-weight: bold; }
-    .paper-title { font-size: 17px; font-weight: bold; }
 
-
-    .bio-table { width: 100%; border: 0; border-spacing: 0; border-collapse: separate; }
-    .bio-table td { padding: 2.5%; vertical-align: middle; }
-    .bio-text  { width: 63%; }
-    .bio-photo { width: 37%; }
+    /* ---------- 简介：flex 两栏 ---------- */
+    .bio {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .bio-text { flex: 1 1 0; min-width: 0; }
+    .bio-name {
+      font-size: 40px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0 0 16px;
+    }
+    .bio-links { text-align: center; }
+    .bio-photo { flex: 0 0 220px; }
     .bio-photo img {
       width: 100%;
-      max-width: 260px;
+      aspect-ratio: 1 / 1;
       object-fit: cover;
       border-radius: 50%;
       display: block;
-      margin: 0 auto;
     }
 
-    /* News */
-    .news { padding: 20px; }
-    .news ul { margin: 10px 0 0; padding-left: 22px; }
+    /* ---------- 区块标题 ---------- */
+    section { margin-top: 40px; }
+    .section-heading {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0 0 8px;
+    }
+    .section-note { font-size: 15px; color: #555; }
+
+    /* ---------- News ---------- */
+    .news ul { margin: 8px 0 0; padding-left: 22px; }
     .news li { margin: 5px 0; }
 
-    .pub-table { width: 100%; border: 0; border-spacing: 0; border-collapse: separate; }
-    .pub-table td { padding: 20px; vertical-align: middle; }
-    .pub-thumb-cell { width: 25%; }
-    .pub-text-cell  { width: 75%; }
-    .paper-thumb {
-      width: 100%;
-      max-width: 340px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      display: block;
+    /* ---------- Publications：flex 行 ---------- */
+    .pub {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 24px 0;
+      border-bottom: 1px solid #eee;
     }
+    .pub:last-child { border-bottom: 0; }
+
+    .pub-thumb {
+      flex: 0 0 240px;      /* 固定图片栏宽度，文字栏永远不会被挤 */
+      align-self: center;
+    }
+    .pub-thumb img {
+      width: 100%;
+      max-height: 170px;
+      object-fit: contain;   /* 完整显示 teaser，不裁切 */
+      border-radius: 6px;
+      display: block;
+      background: #fff;
+    }
+    .pub-text { flex: 1 1 0; min-width: 0; }  /* min-width:0 防止长标题撑破 flex */
+    .paper-title {
+      font-size: 17px;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .pub-text p { margin: 10px 0 0; }
 
     footer {
       text-align: right;
       font-size: small;
-      padding: 20px 0 30px;
+      color: #777;
+      padding: 32px 0;
     }
 
-    @media (max-width: 640px) {
-      .bio-table td, .pub-table td { display: block; width: auto; }
-      .bio-photo img { max-width: 180px; }
-      .paper-thumb { height: auto; max-height: 200px; }
+    /* ---------- 手机：上下堆叠 ---------- */
+    @media (max-width: 720px) {
+      .page { padding-top: 24px; }
+      .bio { flex-direction: column-reverse; gap: 16px; }  /* 照片在上，文字在下 */
+      .bio-photo { flex: 0 0 auto; width: 160px; }
+      .bio-name { font-size: 32px; }
+      .pub { flex-direction: column; align-items: stretch; gap: 12px; }
+      .pub-thumb { flex: 0 0 auto; max-width: 340px; margin: 0 auto; }
     }
   </style>
 </head>
@@ -79,33 +119,32 @@
 <body>
   <div class="page">
 
-    <table class="bio-table"><tbody>
-      <tr>
-        <td class="bio-text">
-          <p style="text-align:center"><span class="name">Zanyi Wang</span></p>
-          <p>I am a MS student in Electrical and Computer Engineering (ECE) at the
-            <a href="https://ucsd.edu/">University of California, San Diego (UCSD)</a>.
-          </p>
-          <p>Previously, I received my B.Eng. in Automation Engineering from
-            <a href="http://en.xjtu.edu.cn/">Xi'an Jiaotong University (XJTU)</a>.
-            I also spent a wonderful time as an exchange student at CUHK.
-          </p>
-          <p>My research interests lie in <strong>Video Understanding</strong> and <strong>Generative Modeling</strong>.</p>
-          <p style="text-align:center">
-            <a href="mailto:zaw003@ucsd.edu">Email</a> &nbsp;/&nbsp;
-            <a href="https://huggingface.co/xmz111">HF</a> &nbsp;/&nbsp;
-            <a href="https://github.com/xmz111">Github</a>
-          </p>
-        </td>
-        <td class="bio-photo">
-          <a href="images/profile.jpg"><img alt="profile photo" src="images/zanyi.jpg"></a>
-        </td>
-      </tr>
-    </tbody></table>
+    <!-- ===================== 简介 ===================== -->
+    <div class="bio">
+      <div class="bio-text">
+        <div class="bio-name">Zanyi Wang</div>
+        <p>I am a MS student in Electrical and Computer Engineering (ECE) at the
+          <a href="https://ucsd.edu/">University of California, San Diego (UCSD)</a>.
+        </p>
+        <p>Previously, I received my B.Eng. in Automation Engineering from
+          <a href="http://en.xjtu.edu.cn/">Xi'an Jiaotong University (XJTU)</a>.
+          I also spent a wonderful time as an exchange student at CUHK.
+        </p>
+        <p>My research interests lie in <strong>Video Understanding</strong> and <strong>Generative Modeling</strong>.</p>
+        <p class="bio-links">
+          <a href="mailto:zaw003@ucsd.edu">Email</a> &nbsp;/&nbsp;
+          <a href="https://huggingface.co/xmz111">HF</a> &nbsp;/&nbsp;
+          <a href="https://github.com/xmz111">Github</a>
+        </p>
+      </div>
+      <div class="bio-photo">
+        <a href="images/profile.jpg"><img alt="profile photo" src="images/zanyi.jpg"></a>
+      </div>
+    </div>
 
     <!-- ===================== News ===================== -->
-    <div class="news">
-      <span class="section-heading">News</span>
+    <section class="news">
+      <div class="section-heading">News</div>
       <ul>
         <li><strong>[2026-07]</strong> One paper accepted to <strong>ACM MM 2026</strong>!</li>
         <li><strong>[2026-06]</strong> One paper accepted to <strong>ECCV 2026</strong>!</li>
@@ -113,56 +152,51 @@
         <li><strong>[2026-01]</strong> One paper accepted to <strong>ICLR 2026</strong>!</li>
         <li><strong>[2025-07]</strong> One paper accepted to <strong>ACM MM 2025</strong>!</li>
       </ul>
-    </div>
+    </section>
 
     <!-- ===================== Publications ===================== -->
-    <div class="news">
-      <span class="section-heading">Selected Publications</span>
-      <span>(* denotes equal contribution)</span>
-    </div>
+    <section>
+      <div class="section-heading">Selected Publications
+        <span class="section-note">(* denotes equal contribution)</span>
+      </div>
 
-    <table class="pub-table"><tbody>
-
-      <tr>
-        <td class="pub-thumb-cell">
-          <img src="images/papers/rechannel.png" class="paper-thumb" alt="Time conditioning in diffusion models teaser">
-        </td>
-        <td class="pub-text-cell">
+      <div class="pub">
+        <div class="pub-thumb">
+          <img src="images/papers/rechannel.png" alt="ReChannel teaser">
+        </div>
+        <div class="pub-text">
           <span class="paper-title">From RGB Generation to Dense Field Readout: Pixel-Space Dense Prediction with Text-to-Image Models</span>
-          <br>
-          Zanyi Wang, Xin Lin, Haodong Li, Dengyang Jiang, Yijiang Li
+          <strong>Zanyi Wang</strong>, Xin Lin, Haodong Li, Dengyang Jiang, Yijiang Li
           <br>
           <em>Preprint</em>, 2026
           <br>
           <a href="https://github.com/xmz111/ReChannel">code</a> /
           <a href="https://arxiv.org/abs/2607.06553">arXiv</a>
           <p>Readout, not generation.</p>
-        </td>
-      </tr>
-      
-      <tr>
-        <td class="pub-thumb-cell">
-          <img src="images/papers/affordancesam.png" class="paper-thumb" alt="AffordanceSAM teaser">
-        </td>
-        <td class="pub-text-cell">
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-thumb">
+          <img src="images/papers/affordancesam.png" alt="AffordanceSAM teaser">
+        </div>
+        <div class="pub-text">
           <span class="paper-title">AffordanceSAM: Segment Anything Once More in Affordance Grounding</span>
-          <br>
           Dengyang Jiang, <strong>Zanyi Wang*</strong>, Hengzhuang Li, Sizhe Dang, Teli Ma, Wei Wei, Guang Dai, Lei Zhang, Mengmeng Wang
           <br>
           <em>ACM International Conference on Multimedia (ACM MM)</em>, 2026
           <br>
           <a href="https://arxiv.org/abs/2504.15650">arXiv</a>
           <p>Transferring SAM to affordance grounding task and showing robust performance for both seen and unseen actions.</p>
-        </td>
-      </tr>
+        </div>
+      </div>
 
-      <tr>
-        <td class="pub-thumb-cell">
-          <img src="images/papers/dmdr.jpg" class="paper-thumb" alt="DMDR teaser">
-        </td>
-        <td class="pub-text-cell">
+      <div class="pub">
+        <div class="pub-thumb">
+          <img src="images/papers/dmdr.jpg" alt="DMDR teaser">
+        </div>
+        <div class="pub-text">
           <span class="paper-title">Distribution Matching Distillation Meets Reinforcement Learning</span>
-          <br>
           Dengyang Jiang, Dongyang Liu, <strong>Zanyi Wang</strong>, Qilong Wu, Liuzhuozheng Li, Hengzhuang Li, Xin Jin, David Liu, Zhen Li, Bo Zhang, Mengmeng Wang, Steven Hoi, Peng Gao, Harry Yang
           <br>
           <em>European Conference on Computer Vision (ECCV)</em>, 2026
@@ -170,32 +204,30 @@
           <a href="https://github.com/vvvvvjdy/dmdr">code</a> /
           <a href="https://arxiv.org/abs/2511.13649">arXiv</a>
           <p>Showing that DMD and RL can be trained simultaneously, with RL enabling the student model to surpass the teacher and DMD loss regularizing RL to prevent reward hacking.</p>
-        </td>
-      </tr>
+        </div>
+      </div>
 
-      <tr>
-        <td class="pub-thumb-cell">
-          <img src="images/papers/gd.png" class="paper-thumb" alt="Grounding DINO video adaptation teaser">
-        </td>
-        <td class="pub-text-cell">
+      <div class="pub">
+        <div class="pub-thumb">
+          <img src="images/papers/gd.png" alt="Grounding DINO video adaptation teaser">
+        </div>
+        <div class="pub-text">
           <span class="paper-title">Unlocking the Potential of Grounding DINO in Videos: Parameter-Efficient Adaptation for Limited-Data Spatial-Temporal Localization</span>
-          <br>
           <strong>Zanyi Wang</strong>, Fan Li, Dengyang Jiang, Liuzhuozheng Li, Yunhua Zhong, Guang Dai, Mengmeng Wang
           <br>
           <em>Conference on Computer Vision and Pattern Recognition (CVPR) @ CV4Smalls WS</em>, 2026
           <br>
           <a href="https://arxiv.org/html/2604.12346v1">arXiv</a>
           <p>A parameter-efficient adaptation approach that successfully tackles complex spatio-temporal localization under strict small-data constraints.</p>
-        </td>
-      </tr>
+        </div>
+      </div>
 
-      <tr>
-        <td class="pub-thumb-cell">
-          <img src="images/papers/refvton.png" class="paper-thumb" alt="RefTON teaser">
-        </td>
-        <td class="pub-text-cell">
+      <div class="pub">
+        <div class="pub-thumb">
+          <img src="images/papers/refvton.png" alt="RefTON teaser">
+        </div>
+        <div class="pub-text">
           <span class="paper-title">RefTON: Person-to-Person Virtual Try-On with Unpaired Visual References</span>
-          <br>
           Liuzhuozheng Li, Yue Gong, Shanyuan Liu, <strong>Zanyi Wang</strong>, Dengyang Jiang, Liebucha Wu, Bo Cheng, Yuhang Ma, Dawei Leng, Yuhui Yin
           <br>
           <em>Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2026
@@ -203,16 +235,15 @@
           <a href="https://github.com/360CVGroup/RefVTON">code</a> /
           <a href="https://arxiv.org/abs/2511.00956">arXiv</a>
           <p>An End-to-End Virtual Try-on model that directly fits the target garment onto the person image.</p>
-        </td>
-      </tr>
+        </div>
+      </div>
 
-      <tr>
-        <td class="pub-thumb-cell">
-          <img src="images/papers/flowrvs.png" class="paper-thumb" alt="FlowRVS teaser">
-        </td>
-        <td class="pub-text-cell">
+      <div class="pub">
+        <div class="pub-thumb">
+          <img src="images/papers/flowrvs.png" alt="FlowRVS teaser">
+        </div>
+        <div class="pub-text">
           <span class="paper-title">Deforming Videos to Masks: Flow Matching for Referring Video Segmentation</span>
-          <br>
           <strong>Zanyi Wang</strong>, Dengyang Jiang, Liuzhuozheng Li, Sizhe Dang, Chengzu Li, Harry Yang, Guang Dai, Mengmeng Wang, Jingdong Wang
           <br>
           <em>International Conference on Learning Representations (ICLR)</em>, 2026
@@ -221,32 +252,30 @@
           <a href="https://arxiv.org/abs/2510.06139">arXiv</a> /
           <a href="https://mp.weixin.qq.com/s/q00A7IB3wd_FzdLv49ad1w">机器之心</a>
           <p>Reformulated RVOS as learning a continuous, text-conditioned flow that deforms a video's content into its target mask.</p>
-        </td>
-      </tr>
+        </div>
+      </div>
 
-      <tr>
-        <td class="pub-thumb-cell">
-          <img src="images/papers/triclip3d.png" class="paper-thumb" alt="TriCLIP-3D teaser">
-        </td>
-        <td class="pub-text-cell">
+      <div class="pub">
+        <div class="pub-thumb">
+          <img src="images/papers/triclip3d.png" alt="TriCLIP-3D teaser">
+        </div>
+        <div class="pub-text">
           <span class="paper-title">TriCLIP-3D: A Unified Parameter-Efficient Framework for Tri-Modal 3D Visual Grounding based on CLIP</span>
-          <br>
           Fan Li, <strong>Zanyi Wang*</strong>, Zeyi Huang, Guang Dai, Jingdong Wang, Mengmeng Wang
           <br>
           <em>ACM International Conference on Multimedia (ACM MM)</em>, 2025
           <br>
           <a href="https://arxiv.org/abs/2507.14904">arXiv</a>
           <p>Developed a unified framework leveraging CLIP's ViT encoder for efficient tri-modal 3D visual grounding.</p>
-        </td>
-      </tr>
+        </div>
+      </div>
 
-      <tr>
-        <td class="pub-thumb-cell">
-          <img src="images/papers/no_time.png" class="paper-thumb" alt="Time conditioning in diffusion models teaser">
-        </td>
-        <td class="pub-text-cell">
+      <div class="pub">
+        <div class="pub-thumb">
+          <img src="images/papers/no_time.png" alt="Time conditioning in diffusion models teaser">
+        </div>
+        <div class="pub-text">
           <span class="paper-title">Exploring Time Conditioning in Diffusion Generative Models from Disjoint Noisy Data Manifolds</span>
-          <br>
           Liuzhuozheng Li, Zhiyuan Zhan, Shuhong Liu, Dengyang Jiang, <strong>Zanyi Wang</strong>, Guang Dai, Jingdong Wang, Mengmeng Wang
           <br>
           <em>Preprint</em>, 2026
@@ -254,29 +283,28 @@
           <a href="https://github.com/liuzhuozheng-LI/time-uncond-diffusion">code</a> /
           <a href="https://arxiv.org/abs/2604.25289">arXiv</a>
           <p>Diffusion models can generate high-quality samples without timestep or class embeddings when noisy data manifolds are kept geometrically disjoint across timesteps.</p>
-        </td>
-      </tr>
+        </div>
+      </div>
 
-      <tr>
-        <td class="pub-thumb-cell">
-          <img src="images/papers/think_in_frames.png" class="paper-thumb" alt="Thinking in Frames teaser">
-        </td>
-        <td class="pub-text-cell">
+      <div class="pub">
+        <div class="pub-thumb">
+          <img src="images/papers/think_in_frames.png" alt="Thinking in Frames teaser">
+        </div>
+        <div class="pub-text">
           <span class="paper-title">Thinking in Frames: How Visual Context and Test-Time Scaling Empower Video Reasoning</span>
-          <br>
           Chengzu Li, <strong>Zanyi Wang*</strong>, Jiaang Li, Yi Xu, Han Zhou, Huanyu Zhang, Ruichuan An, Dengyang Jiang, Zhaochong An, Ivan Vulić, Serge Belongie, Anna Korhonen
           <br>
           <em>Preprint</em>, 2026
           <br>
           <a href="https://arxiv.org/abs/2601.21037">arXiv</a>
           <p>Exploring how visual context enhances video reasoning capabilities.</p>
-        </td>
-      </tr>
+        </div>
+      </div>
 
-    </tbody></table>
+    </section>
 
     <footer>
-      Design and source code from <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron</a>'s website.
+      Design and source code inspired by <a href="https://github.com/jonbarron/jonbarron_website">Jon Barron</a>'s website.
     </footer>
 
   </div>
