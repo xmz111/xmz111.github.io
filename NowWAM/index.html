@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1718">
+  <meta name="description" content="NowWAM applies native denoising directly to the current visual stream for robust robot control—without a separate future target.">
+  <meta property="og:title" content="NowWAM — Beyond Future Prediction">
+  <meta property="og:description" content="Denoising as Generative Adaptation for Robot Control">
+  <meta property="og:image" content="assets/paper-compare.png">
+  <title>NowWAM — Beyond Future Prediction</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header" id="top">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="NowWAM home">
+        <span class="brand-mark">N</span><span>NowWAM</span>
+      </a>
+      <div class="nav-links">
+        <a href="#idea">Idea</a>
+        <a href="#method">Method</a>
+        <a href="#findings">Findings</a>
+      </div>
+      <a class="nav-paper" href="assets/NowWAM.pdf">Paper <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell">
+      <div class="hero-glow glow-a" aria-hidden="true"></div>
+      <div class="hero-glow glow-b" aria-hidden="true"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="pulse"></span> Generative robot control, simplified</p>
+        <h1>Beyond Future Prediction</h1>
+        <p class="hero-deck">Denoising as <span>Generative Adaptation</span><br>for Robot Control</p>
+      </div>
+
+      <div class="hero-aside reveal delay-1">
+        <p class="hero-summary">
+          What if the value of generative pretraining for control lies not in
+          <strong>predicting the future</strong>, but in the denoising trajectory itself?
+        </p>
+        <div class="actions">
+          <a class="button primary" href="assets/NowWAM.pdf">Read the paper <span>↗</span></a>
+          <a class="button ghost" href="#citation">BibTeX</a>
+          <span class="button muted" title="Code release forthcoming">Code soon</span>
+        </div>
+      </div>
+
+      <div class="authors reveal delay-2">
+        <p>
+          <span>Zanyi Wang<sup>1</sup></span>
+          <span>Yuheng Lei<sup>2</sup></span>
+          <span>Dengyang Jiang<sup>3</sup></span>
+          <span>Ping Luo<sup>2</sup></span>
+          <span>Mengdi Wang<sup>4</sup></span>
+          <span>Zhixuan Liang<sup>4,2 ✉</sup></span>
+          <span>Shilong Liu<sup>4 ✉</sup></span>
+        </p>
+        <p class="affiliations"><span><sup>1</sup>UC San Diego</span><span><sup>2</sup>HKU</span><span><sup>3</sup>HKUST</span><span><sup>4</sup>Princeton University</span></p>
+      </div>
+
+      <figure class="teaser reveal">
+        <img src="assets/paper-compare.png" alt="Paper teaser comparing future prediction, future-target co-training, and NowWAM current denoising">
+      </figure>
+    </section>
+
+    <section class="manifesto" id="idea">
+      <div class="shell manifesto-grid">
+        <div class="section-kicker reveal">01 / The idea</div>
+        <div class="manifesto-copy reveal">
+          <p class="question">Does generative co-training help because it predicts <em>what comes next</em>—or because it keeps generative learning coupled to action learning?</p>
+          <div class="answer">
+            <span class="answer-arrow">↳</span>
+            <p>Our controlled comparison shows that past and future targets perform comparably. The native <strong>denoising trajectory</strong>, not forward temporal semantics alone, is the effective interface.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="method">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">02 / Method</p>
+          <h2>Train along the trajectory.<br><span>Act at its clean endpoint.</span></h2>
+        </div>
+        <p class="section-intro">One visual stream supports both current-frame denoising and action learning. At deployment, the policy reads the clean current observation with no visual rollout.</p>
+      </div>
+
+      <div class="method-card reveal">
+        <div class="method-chip">NOWWAM</div>
+        <img src="assets/paper-method.png" alt="NowWAM training and inference diagram from the paper" loading="lazy">
+      </div>
+
+      <div class="principles">
+        <article class="principle reveal">
+          <span class="index">01</span>
+          <h3>Current, not future</h3>
+          <p>The current visual latent is the generative target and the context used by the action expert.</p>
+        </article>
+        <article class="principle reveal delay-1">
+          <span class="index">02</span>
+          <h3>Native denoising</h3>
+          <p>Training samples the action-facing representation across the pretrained DiT trajectory.</p>
+        </article>
+        <article class="principle reveal delay-2">
+          <span class="index">03</span>
+          <h3>Clean control</h3>
+          <p>Inference evaluates the same representation at σ = 0, without an auxiliary visual stream.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section findings-section" id="findings">
+      <div class="shell">
+        <div class="section-head light reveal">
+          <div>
+            <p class="section-kicker">03 / What we learn</p>
+            <h2>Three findings.<br><span>One simpler view.</span></h2>
+          </div>
+          <p class="section-intro">Rather than reproducing the full experiment table, we isolate the evidence that answers the paper’s central question.</p>
+        </div>
+
+        <div class="finding-grid">
+          <article class="finding reveal">
+            <span class="finding-number">01</span>
+            <p class="finding-label">Temporal direction</p>
+            <h3>Past ≈ future</h3>
+            <p class="finding-copy">Forward prediction is not uniquely privileged: a past target performs on par with future targets.</p>
+            <div class="evidence-pair">
+              <span>Past <i>t−16</i><strong>83.80</strong></span>
+              <span>Future <i>t+32</i><strong>83.70</strong></span>
+            </div>
+          </article>
+          <article class="finding featured reveal delay-1">
+            <span class="finding-number">02</span>
+            <p class="finding-label">Adaptation interface</p>
+            <h3>Trajectory &gt; endpoint</h3>
+            <p class="finding-copy">Training across denoising states is substantially stronger than adapting only at the clean endpoint.</p>
+            <div class="evidence-pair">
+              <span>Low-noise shifted<strong>84.97</strong></span>
+              <span>Clean only<strong>77.48</strong></span>
+            </div>
+          </article>
+          <article class="finding reveal delay-2">
+            <span class="finding-number">03</span>
+            <p class="finding-label">Generative backbone</p>
+            <h3>T2I is sufficient</h3>
+            <p class="finding-copy">Strong control adaptation does not require a video-generative or image-editing backbone.</p>
+            <div class="evidence-pair">
+              <span>Z-Image · T2I<strong>87.8</strong></span>
+              <span>FLUX2-Klein<strong>87.7</strong></span>
+            </div>
+          </article>
+        </div>
+
+        <div class="evidence-strip reveal">
+          <p><span>LIBERO-Plus</span><strong>87.7%</strong></p>
+          <p><span>RoboCasa · 100-shot</span><strong>64.9%</strong></p>
+          <p><span>Visual tokens</span><strong>784 → 392</strong></p>
+          <p><span>Training step</span><strong>1.8× faster</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell citation" id="citation">
+      <div class="section-head reveal">
+        <div>
+          <p class="section-kicker">Citation</p>
+          <h2>Build on<br><span>NowWAM.</span></h2>
+        </div>
+      </div>
+      <div class="code-card reveal">
+        <button id="copyBib" aria-label="Copy BibTeX">Copy</button>
+        <pre><code id="bibtex">@article{wang2026nowwam,
+  title   = {Beyond Future Prediction: Denoising as Generative Adaptation for Robot Control},
+  author  = {Wang, Zanyi and Lei, Yuheng and Jiang, Dengyang and Luo, Ping and Wang, Mengdi and Liang, Zhixuan and Liu, Shilong},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <a class="brand" href="#top"><span class="brand-mark">N</span><span>NowWAM</span></a>
+      <p>Beyond future prediction.</p>
+      <p>© 2026 NowWAM authors</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded figure" hidden>
+    <button aria-label="Close expanded figure">×</button>
+    <img alt="Expanded research figure">
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
