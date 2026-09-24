@@ -21,8 +21,7 @@ For GitHub Pages, copy the contents of this directory to the repository root
 of `xmz111/NowWAM` (or configure Pages to publish this directory). The page
 uses only relative asset paths.
 
-Before public release:
+Public links:
 
-- replace the `Code soon` element with the public repository URL;
-- update the BibTeX with the arXiv identifier;
-- optionally replace `assets/NowWAM.pdf` with the arXiv-hosted link.
+- Paper: https://arxiv.org/abs/2609.28339
+- Code: https://github.com/xmz111/NowWAM
