@@ -10,7 +10,7 @@
   <meta property="og:image" content="assets/paper-compare.png">
   <title>NowWAM — Beyond Future Prediction</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=result-clean">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -22,9 +22,8 @@
       <div class="nav-links">
         <a href="#idea">Idea</a>
         <a href="#method">Method</a>
-        <a href="#findings">Findings</a>
+        <a href="#findings">Result</a>
       </div>
-      <a class="nav-paper" href="https://arxiv.org/abs/2609.28339">Paper <span>↗</span></a>
     </nav>
   </header>
 
@@ -33,15 +32,15 @@
       <div class="hero-glow glow-a" aria-hidden="true"></div>
       <div class="hero-glow glow-b" aria-hidden="true"></div>
       <div class="hero-copy reveal">
-        <p class="eyebrow"><span class="pulse"></span> Generative robot control, simplified</p>
+        <p class="eyebrow"><span class="pulse"></span> Born to generate. Adapted to act.</p>
         <h1>Beyond Future Prediction</h1>
-        <p class="hero-deck">Denoising as <span>Generative Adaptation</span><br>for Robot Control</p>
+        <p class="hero-deck">Denoising as <span>Generative Adaptation</span> for Robot Control</p>
       </div>
 
       <div class="hero-aside reveal delay-1">
         <p class="hero-summary">
-          What if the value of generative pretraining for control lies not in
-          <strong>predicting the future</strong>, but in the denoising trajectory itself?
+          The future is the target.<br>
+          <strong>The representation is the point.</strong>
         </p>
         <div class="actions">
           <a class="button primary" href="https://arxiv.org/abs/2609.28339">Read the paper <span>↗</span></a>
@@ -63,106 +62,99 @@
         <p class="affiliations"><span><sup>1</sup>UC San Diego</span><span><sup>2</sup>HKU</span><span><sup>3</sup>HKUST</span><span><sup>4</sup>Princeton University</span></p>
       </div>
 
+    </section>
+
+    <section class="paper-overview shell" aria-label="Paper teaser">
       <figure class="teaser reveal">
-        <img src="assets/paper-compare.png" alt="Paper teaser comparing future prediction, future-target co-training, and NowWAM current denoising">
+        <img src="assets/paper-compare.png" width="2215" height="1399" alt="Paper overview: future prediction in the action loop, future-target co-training, and NowWAM current-stream denoising, with benchmark and training-efficiency results.">
       </figure>
     </section>
 
-    <section class="manifesto" id="idea">
-      <div class="shell manifesto-grid">
-        <div class="section-kicker reveal">01 / The idea</div>
-        <div class="manifesto-copy reveal">
-          <p class="question">Does generative co-training help because it predicts <em>what comes next</em>—or because it keeps generative learning coupled to action learning?</p>
-          <div class="answer">
-            <span class="answer-arrow">↳</span>
-            <p>Our controlled comparison shows that past and future targets perform comparably. The native <strong>denoising trajectory</strong>, not forward temporal semantics alone, is the effective interface.</p>
+    <section class="editorial shell" id="idea">
+      <div class="story-opening reveal">
+        <p class="section-kicker">The idea in three steps</p>
+        <h2>Learn to see through generation.<br><em>Adapt that representation to act.</em></h2>
+      </div>
+      <div class="three-step-story">
+        <figure class="story-step reveal">
+          <p class="step-label">01 / Previous work</p>
+          <div class="photo-visual">
+            <p class="visual-heading">Training · future-target co-training</p>
+            <div class="frame-pair video-target-pair">
+              <div class="frame-unit current-anchor"><div class="frame-photo"><img src="assets/robocasa_temporal_demo/frame_080_display.png" width="256" height="168" alt="Current demonstration frame 80: the robot holds the pear above the placemat."></div><span>Current</span></div>
+              <span class="photo-arrow" aria-hidden="true">→</span>
+              <div class="frame-unit">
+                <div class="future-film">
+                  <div class="frame-photo"><img src="assets/robocasa_temporal_demo/frame_096_display.png" width="256" height="168" alt="Future demonstration frame 96: the pear is above the bowl."></div>
+                  <div class="frame-photo"><img src="assets/robocasa_temporal_demo/frame_112_display.png" width="256" height="168" alt="Future demonstration frame 112: the pear has been placed in the bowl."></div>
+                  <div class="frame-photo selected-target"><img src="assets/robocasa_temporal_demo/frame_124_display.png" width="256" height="168" alt="Future demonstration frame 124: the hand moves away. Highlighted as a schematic single-frame target."></div>
+                </div>
+                <span>Future video</span>
+              </div>
+            </div>
           </div>
-        </div>
+          <figcaption><h3>Prediction as adaptation.</h3><p>A future target gives a pretrained generative model a familiar way to adapt its representations for control.</p></figcaption>
+        </figure>
+        <figure class="story-step reveal">
+          <p class="step-label">02 / Change the target</p>
+          <div class="photo-visual">
+            <p class="visual-heading">Change the time, not the task</p>
+            <div class="temporal-evidence">
+              <div class="time-fork">
+                <span>Current</span>
+                <svg viewBox="0 0 90 80" aria-hidden="true"><path d="M0 40H28M28 40L85 8M28 40L85 72" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="28" cy="40" r="3" fill="currentColor"/></svg>
+                <div><span>Past <small>t − 16</small></span><span>Future <small>t + 32</small></span></div>
+              </div>
+              <p class="target-numbers" aria-label="Past target 83.80 percent, approximately equal to future target 83.70 percent"><span>83.80</span><i>≈</i><span>83.70</span></p>
+            </div>
+          </div>
+          <figcaption><h3>Past ≈ future.</h3><p>Past and future targets perform comparably. The evidence points beyond forward prediction alone.</p></figcaption>
+        </figure>
+        <figure class="story-step reveal" id="method">
+          <p class="step-label">03 / NowWAM</p>
+          <div class="photo-visual">
+            <p class="visual-heading">Same current · different noise levels</p>
+            <div class="noise-sampling" data-running="false" aria-label="The same current image with continuously varying training noise intensity.">
+              <div class="single-noise-input frame-photo"><img src="assets/robocasa_temporal_demo/frame_080_display.png" width="256" height="168" alt="One real current observation with changing illustrative training noise levels."></div>
+              <svg class="sampling-lines" viewBox="0 0 360 28" aria-hidden="true"><path d="M180 0V23M174 17L180 23L186 17" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+              <p class="sampling-label">Sample → Train</p>
+              <p class="joint-objective">Denoising <span>+</span> Action learning</p>
+            </div>
+          </div>
+          <figcaption><h3>Adapt the present.</h3><p>NowWAM couples denoising and action learning on the current stream. No separate target needed.</p></figcaption>
+        </figure>
       </div>
     </section>
 
-    <section class="section shell" id="method">
+    <section class="results shell" id="findings">
       <div class="section-head reveal">
-        <div>
-          <p class="section-kicker">02 / Method</p>
-          <h2>Train along the trajectory.<br><span>Act at its clean endpoint.</span></h2>
-        </div>
-        <p class="section-intro">One visual stream supports both current-frame denoising and action learning. At deployment, the policy reads the clean current observation with no visual rollout.</p>
+        <div><p class="section-kicker">Result</p><h2>More robust.<br><span>Less overhead.</span></h2></div>
       </div>
-
-      <div class="method-card reveal">
-        <div class="method-chip">NOWWAM</div>
-        <img src="assets/paper-method.png" alt="NowWAM training and inference diagram from the paper" loading="lazy">
-      </div>
-
-      <div class="principles">
-        <article class="principle reveal">
-          <span class="index">01</span>
-          <h3>Current, not future</h3>
-          <p>The current visual latent is the generative target and the context used by the action expert.</p>
+      <div class="result-scoreboard reveal">
+        <article class="score-main">
+          <p class="score-label">OOD control / LIBERO-Plus</p>
+          <h3 class="score-value">87.7<span>%</span></h3>
+          <p class="score-description">NowWAM · FLUX.2-Klein</p>
+          <div class="score-comparison"><span>ImageWAM <b>81.6%</b></span><strong>+6.1 <small>pts</small></strong></div>
         </article>
-        <article class="principle reveal delay-1">
-          <span class="index">02</span>
-          <h3>Native denoising</h3>
-          <p>Training samples the action-facing representation across the pretrained DiT trajectory.</p>
+        <article>
+          <p class="score-label">Training speed</p>
+          <h3 class="score-value"><small>≈</small>1.8<span>×</span></h3>
+          <p class="score-description">Faster steps. Half the visual tokens.</p>
+          <div class="score-comparison"><span><b>2.85</b> → <b>1.63</b> s / step</span></div>
         </article>
-        <article class="principle reveal delay-2">
-          <span class="index">03</span>
-          <h3>Clean control</h3>
-          <p>Inference evaluates the same representation at σ = 0, without an auxiliary visual stream.</p>
+        <article>
+          <p class="score-label">Text-to-image backbone</p>
+          <h3 class="score-value">87.8<span>%</span></h3>
+          <p class="score-description">Z-Image · LIBERO-Plus</p>
+          <div class="score-comparison"><span>Beyond video and editing backbones.</span></div>
         </article>
       </div>
-    </section>
-
-    <section class="section findings-section" id="findings">
-      <div class="shell">
-        <div class="section-head light reveal">
-          <div>
-            <p class="section-kicker">03 / What we learn</p>
-            <h2>Three findings.<br><span>One simpler view.</span></h2>
-          </div>
-          <p class="section-intro">Rather than reproducing the full experiment table, we isolate the evidence that answers the paper’s central question.</p>
-        </div>
-
-        <div class="finding-grid">
-          <article class="finding reveal">
-            <span class="finding-number">01</span>
-            <p class="finding-label">Temporal direction</p>
-            <h3>Past ≈ future</h3>
-            <p class="finding-copy">Forward prediction is not uniquely privileged: a past target performs on par with future targets.</p>
-            <div class="evidence-pair">
-              <span>Past <i>t−16</i><strong>83.80</strong></span>
-              <span>Future <i>t+32</i><strong>83.70</strong></span>
-            </div>
-          </article>
-          <article class="finding featured reveal delay-1">
-            <span class="finding-number">02</span>
-            <p class="finding-label">Adaptation interface</p>
-            <h3>Trajectory &gt; endpoint</h3>
-            <p class="finding-copy">Training across denoising states is substantially stronger than adapting only at the clean endpoint.</p>
-            <div class="evidence-pair">
-              <span>Low-noise shifted<strong>84.97</strong></span>
-              <span>Clean only<strong>77.48</strong></span>
-            </div>
-          </article>
-          <article class="finding reveal delay-2">
-            <span class="finding-number">03</span>
-            <p class="finding-label">Generative backbone</p>
-            <h3>T2I is sufficient</h3>
-            <p class="finding-copy">Strong control adaptation does not require a video-generative or image-editing backbone.</p>
-            <div class="evidence-pair">
-              <span>Z-Image · T2I<strong>87.8</strong></span>
-              <span>FLUX2-Klein<strong>87.7</strong></span>
-            </div>
-          </article>
-        </div>
-
-        <div class="evidence-strip reveal">
-          <p><span>LIBERO-Plus</span><strong>87.7%</strong></p>
-          <p><span>RoboCasa · 100-shot</span><strong>64.9%</strong></p>
-          <p><span>Visual tokens</span><strong>784 → 392</strong></p>
-          <p><span>Training step</span><strong>1.8× faster</strong></p>
-        </div>
+      <div class="result-details-strip reveal">
+        <div><span>Robot shift</span><p><small>48.3 →</small> 70.5<em>%</em></p></div>
+        <div><span>Camera shift</span><p><small>77.7 →</small> 88.6<em>%</em></p></div>
+        <div><span>Standard LIBERO</span><p>98.4<em>%</em></p></div>
+        <div><span>RoboCasa · 100 demos / task</span><p>64.9<em>%</em></p></div>
       </div>
     </section>
 
@@ -185,18 +177,10 @@
     </section>
   </main>
 
-  <footer>
-    <div class="shell footer-inner">
-      <a class="brand" href="#top"><span class="brand-mark">N</span><span>NowWAM</span></a>
-      <p>Beyond future prediction.</p>
-      <p>© 2026 NowWAM authors</p>
-    </div>
-  </footer>
-
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Expanded figure" hidden>
     <button aria-label="Close expanded figure">×</button>
     <img alt="Expanded research figure">
   </div>
-  <script src="script.js"></script>
+  <script src="script.js?v=noise-loop"></script>
 </body>
 </html>

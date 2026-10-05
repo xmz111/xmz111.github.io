@@ -1,5 +1,20 @@
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+const sampling = document.querySelector('.noise-sampling');
+if (sampling) {
+  const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let visible = false;
+  function syncSampling() {
+    sampling.dataset.running = String(visible && !document.hidden && !preference.matches);
+  }
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    syncSampling();
+  }, { threshold: .1 }).observe(sampling);
+  document.addEventListener('visibilitychange', syncSampling);
+  preference.addEventListener('change', syncSampling);
+}
+
 if (!reducedMotion) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
